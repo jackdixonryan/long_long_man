@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+  <title>LONG LONG LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNNNNNNGGGGGGGGGGGGGGG MMMMMMMMMMMMMMMAAAAAAAAAAAAAAAAANNNNNNNNNNNNNN</title>
+</head>
+<body>
+  <div id="hacky-overlay"></div>
+  <div id="player" ></div>
+  <button id="main-red-button"></button>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    const button = document.getElementById("main-red-button");
+    const player = document.getElementById("player");
+    const hackyOverlay = document.getElementById("hacky-overlay");
+    let buttonContent = "LONG";
+    button.innerHTML = buttonContent;
+
+    let theJuice;
+
+    window.YT.ready(() => {
+      theJuice = new YT.Player('player', {
+          height: '100%',
+          width: "100%",
+          videoId: 'pENpIU2WMMQ',
+          playerVars: { 'autoplay': 0, 'controls': 0, 'showinfo': 0 },
+          events: {}
+        });
+    });
+
+    let playing = false;
+    button.addEventListener("click", () => {
+      if (!playing) {
+        console.log("STARTING LONG MAN");
+        theJuice.playVideo();
+        setTimeout(() => {
+          showLongMan();
+        }, 6600);
+        playing = true;
+      } else {
+        console.log("WHY WOULD YOU DO THIS?")
+        hideLongMan();
+        theJuice.stopVideo();
+        playing = false;
+      }
+    });
+
+    function showLongMan() {
+      hackyOverlay.style.background = "none"
+    }
+
+    function hideLongMan() {
+      hackyOverlay.style.backgroundColor = "white";
+    }
+
+    function ohYeah() {
+      console.log("LONG");
+    }
+  </script>
+
+  <style>
+    #main-red-button {
+      height: 300px;
+      width: 300px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 100%;
+      cursor: pointer;
+      z-index: 100;
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      font-size: 5rem;
+      font-family: "Impact";
+    }
+
+    #main-red-button:hover {
+      background-color: #d11313;
+    }
+  
+    #hacky-overlay {
+      height: 100vh;
+      width: 100vw;
+      background-color: white;
+      position: absolute;
+      z-index: 10;
+    }
+
+    #player {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+      overflow: hidden;
+      /* display: none; */
+    }
+  </style>
+</body>
+</html>
